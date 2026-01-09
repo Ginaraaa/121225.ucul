@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Untuk Nanaeniiiiiii 🤍</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(135deg, #ff9aa2, #ffd1dc, #fff1f5);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    .card {
+      background: white;
+      width: 92%;
+      max-width: 420px;
+      border-radius: 30px;
+      padding: 26px;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+      position: relative;
+      animation: cardEnter 1s ease;
+      z-index: 2;
+    }
+    @keyframes cardEnter {
+      from { opacity: 0; transform: scale(0.9) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    h1 { color: #ff4d6d; margin-bottom: 5px; }
+    h2 { font-size: 16px; color: #ff6f91; margin-bottom: 15px; }
+    p { color: #555; font-size: 15px; line-height: 1.7; }
+    .emoji {
+      font-size: 48px;
+      margin-bottom: 8px;
+      animation: emojiPulse 1.5s infinite;
+    }
+    @keyframes emojiPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e63950;
+      transform: scale(1.1);
+    }
+    .hidden { display: none; }
+    .animate {
+      display: block;
+      animation: textPop 0.9s cubic-bezier(.25,1.5,.5,1);
+    }
+    @keyframes textPop {
+      from { opacity: 0; transform: translateY(15px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    ul {
+      text-align: left;
+      font-size: 14px;
+      color: #444;
+      padding-left: 18px;
+    }
+    .heart {
+      position: fixed;
+      color: #ff4d6d;
+      font-size: 22px;
+      animation: floatUp 4s ease-out forwards;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes floatUp {
+      from { bottom: -20px; opacity: 1; transform: translateX(0) scale(1); }
+      to { bottom: 110%; opacity: 0; transform: translateX(30px) scale(1.5); }
+    }
+    .hug {
+      position: fixed;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.3);
+      font-size: 90px;
+      opacity: 0;
+      animation: hugIn 2.3s ease forwards;
+      z-index: 5;
+      pointer-events: none;
+    }
+    @keyframes hugIn {
+      0% { bottom: -120px; opacity: 0; transform: translateX(-50%) scale(0.3); }
+      40% { bottom: 40%; opacity: 1; transform: translateX(-50%) scale(1.1); }
+      60% { transform: translateX(-50%) scale(0.95); }
+      80% { transform: translateX(-50%) scale(1.05); }
+      100% { bottom: 35%; opacity: 0; transform: translateX(-50%) scale(0.8); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">🤍🩸</div>
+    <h1>Hai Nanaeniiiiiii 🥺</h1>
+    <h2>(perempuan paling kuat hari ini)</h2>
+    <p>
+      Aku tahu hari ini perut kamu lagi mode:<br>
+      <b>“tolong peluk aku tapi jangan ribut”</b>.
+    </p>
+    <button onclick="stepOne()">Klik kalau kamu pengen disayang 💞</button>
+    <div id="step1" class="hidden">
+      <p>
+        Kalau perasaan kamu itu grafik,<br>
+        hari ini jelas <b>acak tapi valid</b>.
+      </p>
+      <button onclick="stepTwo()">Klik lagi (percaya aku)</button>
+    </div>
+    <div id="step2" class="hidden">
+      <p>Checklist perhatian buat <b>Nanaeniiiiiii</b>:</p>
+      <ul>
+        <li>🛌 Rebahan + kompres kain pake air hangattt</li>
+        <li>🍫 Coklat + ES KLIMMM</li>
+        <li>🤗 Peyuk lamaaaa (WAJIB SIH INI)</li>
+      </ul>
+      <button onclick="stepThree(); hugAnimation();">Ciniiii peyukkkkkk 🤗</button>
+    </div>
+    <div id="step3" class="hidden">
+      <p>
+        *peluk pelan tapi lama* 🤍<br>
+        Kamu nggak drama.<br>
+        Kamu nggak lebay.<br>
+        Kamu cuma lagi butuh disayang.
+      </p>
+      <p style="color:#ff4d6d;">
+        Dan buat aku,<br>
+        Nanaeniiiiiii selalu spesial 💖
+      </p>
+    </div>
+  </div>
+  <script>
+    function showAnimated(id) {
+      const el = document.getElementById(id);
+      el.classList.remove("hidden");
+      el.classList.remove("animate");
+      void el.offsetWidth;
+      el.classList.add("animate");
+    }
+    function stepOne() { showAnimated("step1"); spawnHearts(2); }
+    function stepTwo() { showAnimated("step2"); spawnHearts(3); }
+    function stepThree() { showAnimated("step3"); spawnHearts(6); }
+    function spawnHearts(count) {
+      for (let i = 0; i < count; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+    function hugAnimation() {
+      const hug = document.createElement("div");
+      hug.className = "hug";
+      hug.innerHTML = "🫂";
+      document.body.appendChild(hug);
+      setTimeout(() => hug.remove(), 2300);
+    }
+  </script>
+</body>
+</html>
